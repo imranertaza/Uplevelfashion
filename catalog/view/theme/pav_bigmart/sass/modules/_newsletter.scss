@@ -1,0 +1,208 @@
+.formNewLestter  .white-popup {
+	background: #739493;
+	@extend .text-center;
+	color: #fff;
+	padding: 30px;
+	max-width: 320px;  
+	@media (min-width: $screen-xs-max) {
+		max-width: 570px;
+		padding: 60px 0; 
+	}
+	.description-top {
+		font-size: 30px;
+		line-height: 40px;
+		@media (min-width: $screen-xs-max) {
+			font-size: 72px;
+			line-height: 72px;	
+		}	
+	}
+	.description-bottom {
+		@media (min-width: $screen-xs-max) {
+			width: 50%;
+		} 
+		margin: 10px auto;
+		font-size: 15px;
+		line-height: 24px;
+	}
+	.form-control {
+		@media (min-width: $screen-xs-max) {
+			width: 370px; 
+		}
+		width: auto;
+		height: 46px;
+		margin: auto;
+	}
+	.checkbox {
+		font-style: italic;
+	}
+	.mfp-close {
+		@include border-radius(50%);
+		@include opacity(1);
+		@extend .btn-primary;
+		margin-top: -20px;
+		margin-right: -20px;
+	}
+}
+.valid{
+	position: absolute;
+	width: 100%;	
+	left: 0;
+	right: 0;
+	margin-top: 35px;
+	z-index: 9999;
+}
+.footer-blockbuilder{
+	.pa_single_image_element_wrapper{
+		.image-item{
+			text-align: right;
+			@media(max-width:$screen-xs-max){
+				text-align: center;
+			}
+		}
+	}
+}
+.form-horizontal{
+	.form-group{
+		.date{
+			#input-date-ordered{
+				min-width: 150px;
+				text-align: center;
+			}
+		}
+	}
+}
+.footer-blockbuilder{
+	.pav-newsletter {
+	&.default {
+		font-size: 15px;
+		line-height: 24px;
+		max-width:465px;
+		padding: 20px;
+		position: relative;
+		@media(max-width:$screen-xs-max){
+			margin: 0 auto;
+			text-align: center;
+		}
+		.form-group {
+			position: relative;
+			margin: 0;
+			.button-submit {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				background: #fff;
+				button {
+					position: relative;
+					font-size: 0;
+					width: 50px;
+					height: 40px;
+					border: 0;
+					border-left: 1px solid $border-color;
+					line-height: 55px;
+					padding: 0px;
+					background: transparent;
+					i {
+						color: $text-color;
+						font-size: 20px;
+						height: 40px;
+						width: 50px;
+					}
+					i:hover {
+						color: $theme-color-default;
+					}
+				}
+			}
+		}
+		.form-control {
+			height: 40px;
+			background: #759fe5;
+			color:$white;
+			opacity: 0.6;
+			border-top: 1px solid #698fce;
+		}
+		h3{
+			color:$white;
+			font-size: 24px;
+			font-family: $font-family-serif;
+			font-weight: 700;
+		}
+		.description-top {
+			margin-bottom: 10px;
+			p{
+				font-size: 14px;
+				color:$white;
+				margin-bottom: 30px;
+			}
+		}
+
+	}
+}
+
+
+}
+.pav-newsletter {
+	&.default {
+		font-size: 15px;
+		line-height: 24px;
+		max-width:465px;
+		padding: 20px;
+		position: relative;
+		@media(max-width:$screen-xs-max){
+			margin: 0 auto;
+			text-align: center;
+		}
+		.form-group {
+			position: relative;
+			margin: 0;
+			.button-submit {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				background: #fff;
+				button {
+					position: relative;
+					font-size: 0;
+					width: 50px;
+					height: 40px;
+					border: 0;
+					border-left: 1px solid $border-color;
+					line-height: 55px;
+					padding: 0px;
+					background: transparent;
+					i {
+						color: $text-color;
+						font-size: 20px;
+						height: 40px;
+						width: 50px;
+					}
+					i:hover {
+						color: $theme-color-default;
+					}
+				}
+			}
+		}
+		.form-control {
+			height: 40px;
+			background: #759fe5;
+			color:$white;
+			opacity: 0.6;
+			border-top: 1px solid #698fce;
+		}
+		h3{
+			color:$white;
+			font-size: 24px;
+			font-family: $font-family-serif;
+			font-weight: 700;
+		}
+		.description-top {
+			margin-bottom: 10px;
+			p{
+				font-size: 14px;
+				color:$white;
+				margin-bottom: 30px;
+			}
+		}
+
+	}
+}
+

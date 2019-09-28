@@ -1,0 +1,12 @@
+<div class="box pavpopulartag {{ prefix }}">
+	<div class="box-heading">
+		<span>{{ heading_title }}</span>
+	</div>
+	<div class="box-content">
+		{% if data %}
+			{{ data }}
+		{% else %}
+			{{ text_notags }}
+		{% endif %}
+	</div>
+</div>

@@ -1,0 +1,25 @@
+/*!
+ * PAVOTHEMES OPENCART TEMPLATES.
+ * Copyright © 2018 pavothemes.com. All Rights Reserved.
+ * Pavothemes is not affiliated with or endorsed by Open 
+ * Source Matters or Opencart Project. 
+ */
+/*! http://www.pavothemes.com/ -  https://pavothemes.ticksy.com */
+
+Pav Bigmart - change log
+The first, thank you for purchasing the theme, below is detail of the changes list in this update:
+
+2018/05/09 : update quatity products
+2018/05/11 : fix bug count zoom image
+2018/05/14 : fix compare js
+2018/05/24 : fix sroll review
+
+////////////////////////////////////////////////////////////////////////////
+We are so happy to support you more via our ticket system and email address if you need to help more. 
+Please visting our main site http://www.pavothemes.com for get more information.
+
+Thanks and Best regards,
+
+
+
+

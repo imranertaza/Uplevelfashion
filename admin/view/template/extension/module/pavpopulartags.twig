@@ -1,0 +1,176 @@
+{{ header }} {{ column_left }}
+
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+          <a class="btn btn-primary" onclick="$('#form').submit();">{{ button_save }}</a>
+          <a class="btn btn-success" onclick="$('#action').val('saveedit');$('#form').submit();">{{ text_save_edit }}</a>
+          <a class="btn btn-danger" href="{{ cancel }}">{{ button_cancel }}</a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div><!-- End div#page-header -->
+  <div id="page-content" class="container-fluid">
+
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+  	{% if (success is defined and  success is not empty) %}
+        <div class="alert alert-success"><i class="fa fa-check-circle"></i> {{success}}
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    {% endif %}
+
+    <div class="panel panel-default">
+      	<div class="panel-heading">
+        	<h3 class="panel-title"><i class="fa fa-pencil"></i> {{ subheading }}</h3>
+      	</div>
+      	<div class="panel-body">
+			<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form">
+				<input name="action" type="hidden" id="action"/>
+				<input type="hidden" name="pavpopulartags_module[action]" id="action" value=""/>
+
+				<!-- Nav tabs -->
+                <div class="row">
+                  	<ul class="nav nav-tabs" role="tablist">
+	                    <li {% if selectedid == 0 %} class="active" {% endif %}> <a href="{{ link }}"> <span class="fa fa-plus"></span> {{ button_add_module }}</a></li>
+
+	                    {% set i = i+1 %}
+	                    {% for key,module in moduletabs %}
+	                    <li role="presentation" {% if module.module_id ==  selectedid %} class="active" {% endif %}>
+	                      	<a href="{{ link }}&module_id={{ module.module_id }}" aria-controls="bannermodule-{{ key }}"  >
+	                        	<span class="fa fa-pencil"></span> {{ module.name }}
+	                       	</a>
+	                    </li>
+	                    {% set i = i+1 %}
+	                    {% endfor %}
+                  	</ul>
+                </div>
+
+                <!-- Tab panes -->
+          		<div class="row">
+          			<div class="col-sm-12">
+          				<div>
+          					{% set module_row = 1 %}
+							{% for module in modules %}
+								{% if selectedid %}
+			                	<div class="pull-right">
+			                      <a href="{{ action }}&delete=1" class="remove btn btn-danger" ><span><i class="fa fa-remove"></i> Delete This</span></a>
+			                    </div>
+			                    {% endif %}
+
+			                    <div  id="tab-module{{ module_row }}">
+									<table class="table table-bordered">
+										<tr>
+						                    <td class="col-sm-2">{{ entry_name }}</td>
+						                    <td class="col-sm-10"><input class="form-control" style="width:55%;" name="pavpopulartags_module[{{ module_row }}][name]" value="{{ module.name ? module.name : '' }}"/></td>
+						                </tr>
+						                <tr>
+						                    <td class="col-sm-2">{{ entry_status }}</td>
+						                    <td class="col-sm-10"><select name="pavpopulartags_module[{{ module_row }}][status]" class="form-control" style="width:15%;">
+						                      	{% if module.status %}
+							                      <option value="1" selected="selected">{{ text_enabled }}</option>
+							                      <option value="0">{{ text_disabled }}</option>
+						                      	{% else %}
+							                      <option value="1">{{ text_enabled }}</option>
+							                      <option value="0" selected="selected">{{ text_disabled }}</option>
+						                      	{% endif %}
+						                    </select></td>
+						                </tr>
+
+										<tr>
+											<td class="col-md-2">{{ entry_title }}</td>
+											<td class="col-md-10">
+												<ul class="nav nav-tabs" id="language{{ module_row }}">
+								                    {% for language in languages %}
+										            <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /> {{ language.name }}</a></li>
+										            {% endfor %}
+								                </ul>
+							                    <div class="tab-content">
+								                    {% for language in languages %}
+								                    <div class="" id="tab-module{{ module_row }}-language{{ language.language_id }}">
+														<input name="pavpopulartags_module[{{ module_row }}][title][{{ language.language_id }}]" value="{{ module['title'][language.language_id] ? module['title'][language.language_id] : '' }}" class="form-control" style="width:55%;"/>
+													</div>
+													{% endfor %}
+												</div>	
+											</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-2"><span class="required">* </span>{{ entry_limit_tags }}
+												<br/><span class="help">{{ help_limit_tags }}</span>
+											</td>
+											<td class="col-md-10">
+												<input name="pavpopulartags_module[{{ module_row }}][limit_tags]" value="{{ module.limit_tags ? module.limit_tags : '' }}" class="form-control" style="width:20%;"/>
+											</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-2">{{ entry_min_font_size }}<br>
+												<span class="help">{{ help_min_font_size }}</span>
+											</td>
+											<td class="col-md-10">
+												<input name="pavpopulartags_module[{{ module_row }}][min_font_size]" value="{{ module.min_font_size ? module.min_font_size : '' }}" class="form-control" style="width:20%;"/>
+											</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-2">{{ entry_max_font_size }}<br>
+												<span class="help">{{ help_max_font_size }}</span>
+											</td>
+											<td class="col-md-10">
+												<input name="pavpopulartags_module[{{ module_row }}][max_font_size]" value="{{ module.max_font_size ? module.max_font_size : '' }}" class="form-control" style="width:20%;"/>
+											</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-2">{{ entry_font_weight }}<br>
+												<span class="help">{{ help_font_weight }}</span>
+											</td>
+											<td class="col-md-10">
+												<select name="pavpopulartags_module[{{ module_row }}][font_weight]" class="form-control" style="width:20%;">
+												{% for font in fontweights %}
+													{% if font == module.font_weight %}
+													<option value="{{ font }}" selected="selected">{{ font }}</option>
+													{% else %}
+													<option value="{{ font }}">{{ font }}</option>
+													{% endif %}
+												{% endfor %}
+												</select>
+											</td>
+										</tr>
+
+										<tr>
+											<td class="col-md-2">{{ prefix_class }}</td>
+											<td class="col-md-10">
+												<input name="pavpopulartags_module[{{ module_row }}][prefix]" value="{{ module.prefix ?  module.prefix : '' }}" class="form-control" style="width:20%;"/>
+											</td>
+										</tr>
+									</table>
+								</div>
+								{% set module_row = module_row + 1 %}
+			                {% endfor %}
+          				</div>
+          			</div>
+          		</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"><!--
+{% set module_row = 1 %}
+$('#module li:first-child a').tab('show');
+{% for module in modules %}
+$('#language{{ module_row }} li:first-child a').tab('show');
+{% set module_row = module_row + 1 %}
+{% endfor %}
+//--></script>
+{{ footer }}

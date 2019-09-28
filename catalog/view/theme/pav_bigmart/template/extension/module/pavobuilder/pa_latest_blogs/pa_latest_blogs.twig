@@ -1,0 +1,82 @@
+{% set id = random(1..9) + random() %}
+<div class = "panel panel-default lates-tblogs ">
+    {% if settings.title == 'enabled' %}
+     <div class="panel-heading">
+        <h3 class="panel-title">{{ settings.title_blogs }}</h3>        
+    </div>
+    {% endif %}
+    {% if settings.description %}
+    <div class="description">{{ settings.description }}</div>
+    {% endif %}
+    <div class="panel-body">
+        <div class="{% if settings.posts|length <= settings.view*settings.rows %}swiper-no-swiping{% endif %}">
+            <div id="latestblogs{{id}}" class="swiper-container pavo-swiper">
+                <div class="swiper-wrapper">
+                    {% for post in settings.posts %}
+                        <div class="swiper-slide">
+                            <div class="blogs-thumb transition {{ settings.extra_class }}">
+                                <div class="image text-center">
+                                    <a href="{{ post.link }}" class="pa-element blog-image">
+                                        <img class="img-responsive" src="{{ post.thumb }}" alt="" />
+                                    </a>
+                                </div>
+                                
+                                <div class="blog-body">
+                                    <h3 class="blog-title">
+                                        <a href="{{ post.link }}" class="pa-element">
+                                        {{ (post.name|striptags)|slice(0,58) }}
+                                        </a>
+                                    </h3>
+                                    <div class="blog-content"> 
+                                        <div class="blog-meta">
+                                            <span class="blog-username text-primary">{{ post.username }}</span>
+                                            <span class="blog-date">{{ post.date_added }}</span>
+                                        </div>  
+                                        <div class="post-content">                                  
+                                            {{ (post.content|striptags)|slice(0,100) }}...
+                                        </div>
+                                        <div class="btn-readmore">
+                                            <a class="btn btn-link" href="{{ post.link }}">{{ entry_read_more_text }}</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pager">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script><!--
+    $('#latestblogs{{id}}').swiper({
+        pause: 'hover',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: {{ settings.view ? settings.view : 2 }},
+        loop:{{ settings.loop ? settings.loop : 'false'}},
+        autoplay: {% if settings.auto_play == 'enabled' %}{{ settings.interval }}{% else %}0{% endif %},
+        noSwipingClass: 'swiper-no-swiping',
+        slidesPerColumn:{{ settings.rows ? settings.rows : 1 }},
+        spaceBetween: 30,
+        breakpoints: {
+            767: {
+                slidesPerView: 1,
+                {% if (settings.posts|length) > (1*settings.rows) %}
+                noSwiping: false
+                {% endif %}
+            },
+            991: {
+                slidesPerView: 2,
+                {% if (settings.posts|length) > (2*settings.rows) %}
+                noSwiping: false
+                {% endif %}
+            }, 
+        }
+    });
+--></script>
