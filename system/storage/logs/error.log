@@ -1,0 +1,10 @@
+2019-09-29 12:49:32 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-09-29 12:49:33 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-09-30 13:31:00 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-09-30 13:31:02 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-09-30 13:31:26 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-09-30 13:31:29 - PHP Notice:  Undefined variable: file in C:\xampp\htdocs\uplevelfashion\admin\controller\extension\module\pavothemer.php on line 2300
+2019-10-02 11:54:33 - PHP Warning:  mysqli::__construct(): (HY000/2002): No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\uplevelfashion\system\library\db\mysqli.php on line 7
+2019-10-02 11:54:33 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in C:\xampp\htdocs\uplevelfashion\system\library\db\mysqli.php on line 10
+2019-10-02 11:54:33 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in C:\xampp\htdocs\uplevelfashion\system\library\db\mysqli.php on line 10
